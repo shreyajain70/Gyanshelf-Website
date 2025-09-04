@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DashboardBookCards } from "../Cards/DashbordBookCards";
 import ClassDropDown from "./ClassDropdown";
-import BoardDropDown from "./BoardDropDown";
+import { BoardDropDown } from "./BoardDropDown";
 import EditionDropDown from "./EditionDropDown";
 import {
   FaHome,
