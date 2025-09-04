@@ -112,14 +112,10 @@ function Dashboard() {
 
           {/* Filters */}
           <div className="filters-row">
-            <ClassDropDown
-              selected={selectedClass}
-              setSelected={setSelectedClass}
-            />
-            <BoardDropDown
-              selected={selectedBoard}
-              setSelected={setSelectedBoard}
-            />
+            <ClassDropDown> selected={selectedClass}
+              setSelected={setSelectedClass}</ClassDropDown>
+            <BoardDropDown> selected={selectedBoard}
+              setSelected={setSelectedBoard}</BoardDropDown>
             <EditionDropDown
               selected={selectedEdition}
               setSelected={setSelectedEdition}
