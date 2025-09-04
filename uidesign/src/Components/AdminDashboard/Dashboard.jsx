@@ -1,9 +1,7 @@
-// src/Pages/Dashboard/Dashboard.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { DashboardBookCards } from "../Cards/DashbordBookCards";
 import ClassDropDown from "./ClassDropdown";
-import { BoardDropDown } from "./BoardDropDown";
 import EditionDropDown from "./EditionDropDown";
 import {
   FaHome,
@@ -45,6 +43,96 @@ function Dashboard() {
     fetchUser();
     fetchCartCount();
   }, []);
+
+  // ====== Inline BoardDropDown ======
+  const boardOptions = ["HP Board", "CBSE", "ICSE", "ISC"];
+
+  const BoardDropDown = ({ selected, setSelected }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [searchTermDropdown, setSearchTermDropdown] = useState("");
+    const dropdownRef = useRef(null);
+
+    const filteredOptions = boardOptions.filter((option) =>
+      option.toLowerCase().includes(searchTermDropdown.toLowerCase())
+    );
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+      function handleOutsideClick(event) {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsOpen(false);
+        }
+      }
+      document.addEventListener("mousedown", handleOutsideClick);
+      return () => document.removeEventListener("mousedown", handleOutsideClick);
+    }, []);
+
+    return (
+      <div className="board-dropdown" ref={dropdownRef}>
+        <div
+          className="board-dropdown__header"
+          onClick={() => setIsOpen(!isOpen)}
+          tabIndex={0}
+          role="button"
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+        >
+          <span
+            className={`board-dropdown__selected ${
+              selected === "Select by Board" ? "placeholder" : ""
+            }`}
+          >
+            {selected}
+          </span>
+          <span className={`board-dropdown__arrow ${isOpen ? "open" : ""}`} />
+        </div>
+        {isOpen && (
+          <div className="board-dropdown__menu">
+            <input
+              type="text"
+              className="board-dropdown__search"
+              placeholder="Search..."
+              value={searchTermDropdown}
+              onChange={(e) => setSearchTermDropdown(e.target.value)}
+              autoFocus
+            />
+            <ul className="board-dropdown__list" role="listbox" tabIndex={-1}>
+              {filteredOptions.length > 0 ? (
+                filteredOptions.map((option) => (
+                  <li
+                    key={option}
+                    className={`board-dropdown__item ${
+                      option === selected ? "selected" : ""
+                    }`}
+                    onClick={() => {
+                      setSelected(option);
+                      setIsOpen(false);
+                      setSearchTermDropdown("");
+                    }}
+                    role="option"
+                    aria-selected={option === selected}
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        setSelected(option);
+                        setIsOpen(false);
+                        setSearchTermDropdown("");
+                      }
+                    }}
+                  >
+                    {option}
+                  </li>
+                ))
+              ) : (
+                <li className="board-dropdown__item no-results">No results found</li>
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
+  // ====== End Inline BoardDropDown ======
 
   return (
     <div className="dashboard">
@@ -120,7 +208,6 @@ function Dashboard() {
               selected={selectedBoard}
               setSelected={setSelectedBoard}
             />
-
             <EditionDropDown
               selected={selectedEdition}
               setSelected={setSelectedEdition}
