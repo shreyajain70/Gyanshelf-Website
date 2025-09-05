@@ -8,7 +8,7 @@ const YourCart = ({ userId }) => {
 
   // Fetch cart items for a user
   const fetchCartItems = () => {
-    api.get(`/api/AddToCart/cart/${userId}`)
+    api.get(`/AddToCart/cart/${userId}`)
       .then(res => { 
         setCartItems(res.data); 
         setLoading(false); 
@@ -21,7 +21,7 @@ const YourCart = ({ userId }) => {
 
   // Remove a book from the cart
   const handleRemoveFromCart = (bookId) => {
-    api.delete(`/api/AddToCart/cart/${userId}/${bookId}`)
+    api.delete(`/AddToCart/cart/${userId}/${bookId}`)
       .then(() => fetchCartItems())
       .catch(err => alert("❌ Failed to remove item"));
   };

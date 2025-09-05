@@ -14,7 +14,7 @@ export const BooksPosted = () => {
     const fetchBooks = async () => {
       if (!userId) return;
       try {
-        const res = await api.get("/api/BooksPosted/my-posted-books", {
+        const res = await api.get("/BooksPosted/my-posted-books", {
           headers: { userId },
         });
         setBooks(res.data);
@@ -42,7 +42,7 @@ export const BooksPosted = () => {
 
     try {
       setDeleting(bookId);
-      const res = await api.delete(`/api/BooksPosted/delete-book/${bookId}`, {
+      const res = await api.delete(`/BooksPosted/delete-book/${bookId}`, {
         headers: { userId },
       });
       alert(res.data.message || "Book deleted");
@@ -94,3 +94,4 @@ export const BooksPosted = () => {
     </div>
   );
 };
+  

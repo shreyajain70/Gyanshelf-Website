@@ -14,7 +14,7 @@ export const DashboardBookCards = ({
 
   // Fetch posted books
   useEffect(() => {
-    api.get("/api/PostedBooks")
+    api.get("/PostedBooks")
       .then((res) => setBooks(res.data))
       .catch((err) => console.error("❌ Error fetching books:", err));
   }, []);
@@ -38,7 +38,7 @@ export const DashboardBookCards = ({
 
   // Add book to cart
   const handleAddToCart = (book) => {
-    api.post("/api/AddToCart/cart", { userId, bookId: book._id })
+    api.post("/AddToCart/cart", { userId, bookId: book._id })
       .then(() => {
         alert(`✅ "${book.Title}" added to cart!`);
         if (onCartUpdate) onCartUpdate();

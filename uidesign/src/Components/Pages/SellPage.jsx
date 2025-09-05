@@ -65,7 +65,7 @@
         if (frontImage) data.append("FrontImage", frontImage);
         if (backImage) data.append("BackImage", backImage);
 
-        const res = await api.post("/api/SellPage/upload", data, {
+        const res = await api.post("/SellPage/upload", data, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

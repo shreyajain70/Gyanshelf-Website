@@ -24,7 +24,7 @@ export const UpdateProfile = () => {
       setLoading(false);
       return;
     }
-    api.get(`/api/UpdateProfile/${userId}`)
+    api.get(`/UpdateProfile/${userId}`)
       .then((res) => {
         setUser(res.data);
         setFormData(res.data);
@@ -44,7 +44,7 @@ export const UpdateProfile = () => {
 
   const handleUpdate = () => {
     setSaving(true); // Start spinner
-    api.put(`/api/UpdateProfile/${userId}`, formData)
+    api.put(`/UpdateProfile/${userId}`, formData)
       .then((res) => {
         setUser(res.data.user);
         setMessage("✅ Profile updated successfully!");
@@ -59,7 +59,7 @@ export const UpdateProfile = () => {
       return;
     }
     setPasswordLoading(true); // Start spinner
-    api.put(`/api/UpdateProfile/${userId}/password`, { newPassword: passwordData.newPassword })
+    api.put(`/UpdateProfile/${userId}/password`, { newPassword: passwordData.newPassword })
       .then(() => {
         setMessage("✅ Password updated successfully!");
         setPasswordData({ newPassword: "", confirmPassword: "" });

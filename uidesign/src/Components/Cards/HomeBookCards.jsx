@@ -8,7 +8,7 @@ export const HomeBookCards = () => {
 
   // Fetch all posted books
   useEffect(() => {
-    api.get("/api/PostedBooks")
+    api.get("/PostedBooks")
       .then((res) => {
         console.log("📦 API response:", res.data);
 
