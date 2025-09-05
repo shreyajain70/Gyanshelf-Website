@@ -9,7 +9,7 @@ export const BookDetails = ({ userId, onCartUpdate }) => {
 
   // Fetch book details
   useEffect(() => {
-    api.get(`/books/${id}`)
+    api.get(`/api/books/${id}`)
       .then(res => {
         setBook(res.data);
         setLoading(false);
@@ -22,7 +22,7 @@ export const BookDetails = ({ userId, onCartUpdate }) => {
 
   // Add book to cart
   const handleAddToCart = () => {
-    api.post("/AddToCart/cart", { userId, bookId: book._id })
+    api.post("/api/AddToCart/cart", { userId, bookId: book._id })
       .then(() => {
         alert(`✅ "${book.Title}" added to cart!`);
         if (onCartUpdate) onCartUpdate(); // update sidebar count

@@ -20,7 +20,7 @@ export default function ForgotPassword() {
     setLoading(true);
     setMessage("OTP is being sent, please wait...");
     try {
-      await api.post("/ForgetPassword/forgot-password", { EmailID: email });
+      await api.post("/api/ForgetPassword/forgot-password", { EmailID: email });
       setMessage("✅ OTP sent successfully!");
       setStep(2);
     } catch (err) {
@@ -36,7 +36,7 @@ export default function ForgotPassword() {
     setLoading(true);
     setMessage("Resetting password, please wait...");
     try {
-      const res = await api.post("/ForgetPassword/reset-password", {
+      const res = await api.post("/api/ForgetPassword/reset-password", {
         EmailID: email,
         otp,
         newPassword,

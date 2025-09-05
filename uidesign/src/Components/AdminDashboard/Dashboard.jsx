@@ -26,7 +26,7 @@ function Dashboard() {
   // Fetch user details
   const fetchUser = () => {
     api
-      .get(`/Dashboard/${userId}`)
+      .get(`/api/Dashboard/${userId}`)
       .then((res) => setUser(res.data))
       .catch((err) => console.error("❌ Error fetching user:", err));
   };
@@ -34,7 +34,7 @@ function Dashboard() {
   // Fetch cart count
   const fetchCartCount = () => {
     api
-      .get(`/AddToCart/cart/${userId}`)
+      .get(`/api/AddToCart/cart/${userId}`)
       .then((res) => setCartCount(res.data.length))
       .catch((err) => console.error("❌ Error fetching cart:", err));
   };

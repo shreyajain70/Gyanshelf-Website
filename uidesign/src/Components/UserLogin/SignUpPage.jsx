@@ -80,7 +80,7 @@ export const SignUpPage = () => {
     setMessage({ text: "Please wait...", type: "info" });
 
     try {
-      const response = await api.post("/SignUp", {
+      const response = await api.post("/api/SignUp", {
         FirstName,
         LastName,
         Gender,

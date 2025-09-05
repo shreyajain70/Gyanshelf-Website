@@ -42,16 +42,16 @@ const CartRoute = require("./routes/AddtoCart");
 const BooksPostedRoute = require("./routes/BooksPosted");
 const ForgetPassword = require("./routes/ForgetPassword");
 
-App.use("/SignUp", SignUpRoute);
-App.use("/Login", LoginRoute);
-App.use("/Dashboard", dashboardRoutes);
-App.use("/SellPage", SellRoute);
-App.use("/PostedBooks", GetBookCards);
-App.use("/UpdateProfile", UpdateProfile);
-App.use("/books", BookDetailsRoute);
-App.use("/AddToCart", CartRoute);
-App.use("/BooksPosted", BooksPostedRoute);
-App.use("/ForgetPassword", ForgetPassword);
+App.use("/api/SignUp", SignUpRoute);
+App.use("/api/Login", LoginRoute);
+App.use("/api/Dashboard", dashboardRoutes);
+App.use("/api/SellPage", SellRoute);
+App.use("/api/PostedBooks", GetBookCards);
+App.use("/api/UpdateProfile", UpdateProfile);
+App.use("/api/books", BookDetailsRoute);
+App.use("/api/AddToCart", CartRoute);
+App.use("/api/BooksPosted", BooksPostedRoute);
+App.use("/api/ForgetPassword", ForgetPassword);
 
 // Database + Server
 

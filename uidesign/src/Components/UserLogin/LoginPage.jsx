@@ -15,7 +15,7 @@ export function LoginPage() {
     e.preventDefault();
     setError("");
     try {
-      const res = await api.post("/Login", { EmailID, Password });
+      const res = await api.post("/api/Login", { EmailID, Password });
 
       if (res.status === 200) {
         console.log("Login successful:", res.data);

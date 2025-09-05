@@ -18,7 +18,7 @@ export const Header = () => {
 
   useEffect(() => {
     api
-      .get("/PostedBooks")
+      .get("/api/PostedBooks")
       .then((res) => setBooks(res.data))
       .catch((err) => console.error(err));
   }, []);
