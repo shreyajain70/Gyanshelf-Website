@@ -61,10 +61,7 @@ export const BookDetails = ({ userId, onCartUpdate }) => {
           </div>
         )}
 
-        {/* <div className="bd-action-buttons">
-          <button className="bd-add-cart-btn" onClick={handleAddToCart}>🛒 Add to Wishlist</button>
-          <Link to="/dashboard" className="bd-back-btn">⬅ Back</Link>
-        </div> */}
+
 
         <div className="bd-action-buttons">
   <button className="bd-wishlist-btn" onClick={handleAddToCart}>

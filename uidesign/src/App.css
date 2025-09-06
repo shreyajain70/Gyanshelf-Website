@@ -2815,25 +2815,7 @@ body {
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
-
-/* ===== Responsive & Attractive Sidebar ===== */
-
-/* Tablet screens */
-@media (max-width: 992px) {
-  .sidebar {
-    width: 200px;
-    padding: 1.5rem 1rem;
-  }
-  .sidebar .logo {
-    font-size: 1.3rem;
-  }
-  .sidebar nav ul li a {
-    font-size: 0.9rem;
-    padding: 0.55rem 0.9rem;
-  }
-}
-
-/* Mobile screens */
+/* ===== Mobile screens ===== */
 @media (max-width: 768px) {
   .dashboard {
     flex-direction: column;
@@ -2842,81 +2824,66 @@ body {
   .sidebar {
     width: 100%;
     height: auto;
+    display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1rem;
+    gap: 0.6rem;
+    padding: 0.4rem 0.6rem;
     border-radius: 0;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+
+    overflow-x: auto;          /* ✅ allow horizontal scroll */
+    white-space: nowrap;       /* ✅ prevent wrapping */
+    scrollbar-width: none;     /* hide scrollbar (Firefox) */
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;             /* hide scrollbar (Chrome, Safari) */
   }
 
   .sidebar .logo {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: #3b6ef5;
-    margin-bottom: 0;
+    margin-right: 0.8rem;
+    flex-shrink: 0;            /* keep logo visible */
+  }
+
+  .sidebar nav {
+    flex: 1;                   /* take remaining width */
   }
 
   .sidebar nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: flex-end;
+    display: inline-flex;      /* ✅ keep in one row */
+    gap: 0.4rem;
     margin: 0;
+    padding: 0;
   }
 
   .sidebar nav ul li {
-    margin: 0;
+    list-style: none;
+    flex-shrink: 0;            /* ✅ prevent squishing */
   }
 
   .sidebar nav ul li a {
-    font-size: 0.85rem;
-    padding: 0.45rem 0.8rem;
-    border-radius: 8px;
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
     transition: all 0.3s ease;
   }
 
   .sidebar nav ul li a:hover {
-    background: linear-gradient(135deg, #f0f4ff, #e6ecff);
+    background: #f0f4ff;
     color: #3b6ef5;
     box-shadow: 0 2px 8px rgba(59, 110, 245, 0.15);
-    transform: translateY(-2px);
   }
 
   .main-content {
-    padding: 1rem;
+    padding: 0.8rem;
   }
 }
-
-/* Extra small screens */
-@media (max-width: 480px) {
-  .sidebar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.6rem;
-    padding: 1rem;
-  }
-
-  .sidebar nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: 0.3rem;
-  }
-
-  .sidebar nav ul li a {
-    font-size: 0.8rem;
-    width: 100%;
-    text-align: left;
-  }
-}
-
 
 /* ===== Dashboard Books Wrapper ===== */
 .dashboard-books-wrapper {
@@ -3951,6 +3918,81 @@ select:focus {
     transform: rotate(0);
   }
 }
+/* ==========================
+   Responsive Design (add only)
+========================== */
+
+/* Tablet (<=1024px) */
+@media (max-width: 1024px) {
+  .bd-title {
+    font-size: 1.7rem;
+  }
+  .bd-front-image,
+  .bd-back-image {
+    max-width: 160px;
+  }
+}
+
+/* Mobile & Small Tablets (<=768px) */
+@media (max-width: 768px) {
+  .bd-main-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bd-front-image,
+  .bd-back-image {
+    max-width: 140px;
+    margin: 0.5rem auto;
+  }
+
+  .bd-info {
+    min-width: auto;
+  }
+
+  .bd-title {
+    font-size: 1.5rem;
+  }
+
+  .bd-action-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Small Phones (<=480px) */
+@media (max-width: 480px) {
+  .bd-container {
+    padding: 0.8rem;
+    margin: 1rem;
+  }
+
+  .bd-title {
+    font-size: 1.3rem;
+  }
+
+  .bd-info p {
+    font-size: 0.9rem;
+  }
+
+  .bd-front-image,
+  .bd-back-image {
+    max-width: 110px;
+  }
+
+  .bd-add-cart-btn,
+  .bd-back-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .bd-wishlist-btn {
+    width: 100%;
+    height: 2.8rem;
+  }
+}
+
 
 
 /* ========================
